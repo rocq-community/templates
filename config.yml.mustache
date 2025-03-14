@@ -66,3 +66,8 @@ workflows:
         name: "{{ repo }}{{^ repo }}Coq{{/ repo }} {{ version }}"
         coq: "{{ repo }}{{^ repo }}coqorg/coq{{/ repo }}:{{ version }}"
 {{/ tested_coq_opam_versions }}
+{{# tested_rocq_opam_versions }}
+    - build:
+        name: "{{ repo }}{{^ repo }}Rocq{{/ repo }} {{ version }}"
+        coq: "{{ repo }}{{^ repo }}rocq/rocq-prover{{/ repo }}:{{ version }}"
+{{/ tested_rocq_opam_versions }}

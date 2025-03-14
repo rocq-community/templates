@@ -477,6 +477,34 @@ fields:
         - .travis.yml
         - docker-action.yml
         - config.yml
+  - tested_rocq_opam_versions:
+      type: list
+      item_fields:
+        - version:
+            required: true
+            description: >
+              Docker tag supported by rocq/rocq-prover:
+              https://hub.docker.com/r/rocq/rocq-prover/tags
+              Quote the strings, otherwise '9.10' becomes '9.1'.
+            examples:
+              - "9.0"
+              - "dev-native-flambda"
+        - repo:
+            required: false
+            description: >
+              Docker repository supporting the given docker tag.
+              Defaults to 'rocq/rocq-prover'.
+            examples:
+              - "mathcomp/mathcomp"
+              - "mathcomp/mathcomp-dev"
+            used:
+              - .travis.yml
+              - docker-action.yml
+              - config.yml
+      used:
+        - .travis.yml
+        - docker-action.yml
+        - config.yml
   - ci_cron_schedule:
       required: false
       description: >
