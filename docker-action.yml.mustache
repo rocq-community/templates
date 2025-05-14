@@ -24,6 +24,9 @@ jobs:
 {{# tested_coq_opam_versions }}
           - '{{ repo }}{{^ repo }}coqorg/coq{{/ repo }}:{{ version }}'
 {{/ tested_coq_opam_versions }}
+{{# tested_rocq_opam_versions }}
+          - '{{ repo }}{{^ repo }}rocq/rocq-prover{{/ repo }}:{{ version }}'
+{{/ tested_rocq_opam_versions }}
       fail-fast: false
     steps:
       - uses: actions/checkout@v4

@@ -87,6 +87,14 @@ jobs:
     - NJOBS=2
     <<: *OPAM
 {{/ tested_coq_opam_versions }}
+  # Test supported versions of Rocq via OPAM
+{{# tested_rocq_opam_versions }}
+  - env:
+    - COQ_IMAGE={{ repo }}{{^ repo }}rocq/rocq-prover{{/ repo }}:{{ version }}
+    - PACKAGE={{ opam_name }}{{^ opam_name }}coq-{{ shortname }}{{/ opam_name }}.{{ opam-file-version }}{{^ opam-file-version }}dev{{/ opam-file-version }}
+    - NJOBS=2
+    <<: *OPAM
+{{/ tested_rocq_opam_versions }}
 
 {{# extracted }}
   # Test extracted supported versions of Coq via OPAM
