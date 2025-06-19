@@ -82,7 +82,7 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 {{# authors }}
   - {{& name }}{{# orcid }} [<img src="https://zenodo.org/static/images/orcid.svg" height="14px" alt="ORCID logo" />](https://orcid.org/{{ orcid }}){{/ orcid }}{{# initial }} (initial){{/ initial }}
 {{/ authors }}
-{{& after_authors }}{{# community }}- Coq-community maintainer(s):
+{{& after_authors }}{{# community }}- Rocq-community maintainer(s):
 {{# maintainers }}
   - {{& name }} ([**@{{ nickname }}**](https://github.com/{{ nickname }}))
 {{/ maintainers }}
@@ -91,7 +91,7 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 - License: [{{& fullname }}]({{ file }}{{^ file }}LICENSE{{/ file }})
 {{/ license }}
 {{# supported_coq_versions }}
-- Compatible Coq versions: {{& text }}
+- Compatible Rocq/Coq versions: {{& text }}
 {{/ supported_coq_versions }}
 {{# supported_ocaml_versions }}
 - Compatible OCaml versions: {{& text }}
@@ -100,7 +100,7 @@ Follow the instructions on https://github.com/coq-community/templates to regener
   - {{& description }}{{/ dependencies }}{{^ dependencies }}{{^ dune }} none{{/ dune }}{{/ dependencies }}{{# dune }}
   - [Dune](https://dune.build) 3.6 or later{{/ dune }}
 {{# namespace }}
-- Coq namespace: `{{ namespace }}`
+- Rocq/Coq namespace: `{{ namespace }}`
 {{/ namespace }}
 - Related publication(s):{{# publications }}
   - [{{& pub_title }}]({{ pub_url }}) {{# pub_doi }}doi:[{{ pub_doi }}](https://doi.org/{{ pub_doi }}){{/ pub_doi}}{{/ publications }}{{^ publications }} none{{/ publications }}
