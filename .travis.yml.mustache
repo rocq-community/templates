@@ -35,13 +35,13 @@ language: shell
       set -ex
       sudo chown -R coq:coq /home/coq/${PACKAGE}
       opam install ${PACKAGE} -v -y -j ${NJOBS}
-{{# ci_test_dependants }}
+{{# ci_test_dependants.enabled }}
       PINS=$(opam list -s --pinned --columns=package | xargs | tr ' ' ,)
-      PACKAGES=`opam list -s --depends-on {{ opam_name }}{{^ opam_name }}coq-{{ shortname }}{{/ opam_name }} --coinstallable-with $PINS`
+      PACKAGES="{{# ci_test_dependants.packages }}{{.}} {{/ ci_test_dependants.packages }}"
       if [ -n "$PACKAGES" ]
       then opam install -t $PACKAGES
       fi
-{{/ ci_test_dependants }}
+{{/ ci_test_dependants.enabled }}
       "
   - docker stop COQ  # optional
   - echo -en 'travis_fold:end:script\\r'

@@ -41,18 +41,18 @@ jobs:
         name: Build, test, and install package
         command: opam install -t .
 {{& circleci_after_script }}
-{{# ci_test_dependants }}
+{{# ci_test_dependants.enabled }}
     - run:
         name: Test dependants
         command: |
           PINS=$(opam list -s --pinned --columns=package | xargs | tr ' ' ,)
-          PACKAGES=`opam list -s --depends-on {{ opam_name }}{{^ opam_name }}coq-{{ shortname }}{{/ opam_name }} --coinstallable-with $PINS`
+          PACKAGES="{{# ci_test_dependants.packages }}{{.}} {{/ ci_test_dependants.packages }}"
           for PACKAGE in $PACKAGES
           do DEPS_FAILED=false
              opam install --deps-only $PACKAGE || DEPS_FAILED=true
              [ $DEPS_FAILED == true ] || opam install -t $PACKAGE
           done
-{{/ ci_test_dependants }}
+{{/ ci_test_dependants.enabled }}
     - run:
         name: Uninstall package
         command: opam uninstall .
