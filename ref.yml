@@ -75,11 +75,15 @@ fields:
         - README.md
         - .travis.yml
   - ci_test_dependants:
-      type: bool
       used:
         - config.yml
         - .travis.yml
         - docker-action.yml
+      item_fields:
+        - name: enabled
+          type: bool
+        - name: packages
+          type: list
   - ci_extra_dev:
       type: bool
       description: >
