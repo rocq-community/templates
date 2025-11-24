@@ -54,7 +54,7 @@ jobs:
               PACKAGES="<%# ci_test_dependants.packages %><%.%> <%/ ci_test_dependants.packages %>"
               for PACKAGE in $PACKAGES
               do DEPS_FAILED=false
-                 opam install -y --deps-only $PACKAGE || DEPS_FAILED=true
+                 opam install -y -t --deps-only $PACKAGE || DEPS_FAILED=true
                  [ $DEPS_FAILED == true ] || opam install -t $PACKAGE
               done
             endGroup
